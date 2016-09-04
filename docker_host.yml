@@ -1,0 +1,11 @@
+---
+- hosts: docker_host
+  become: yes
+  remote_user: docker
+  roles:
+    - centos
+
+- hosts: test-container
+  connection: docker
+  roles:
+    - common
