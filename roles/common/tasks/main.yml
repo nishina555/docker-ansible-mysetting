@@ -5,3 +5,23 @@
       - vim
       - zsh
       - git
+      - tmux
+    - name: clone dotfiles
+      git: repo=https://github.com/toshi247/dotfile.git dest=~/dotfile accept_hostkey=yes
+      sudo: no
+    - name: clone neobundle
+      git: repo=https://github.com/Shougo/neobundle.vim dest=~/.vim/bundle/neobundle.vim accept_hostkey=yes
+      sudo: no
+    - name: neoinstall
+      command: ~/.vim/bundle/neobundle.vim/bin/neoinstall
+    - name: create symbolic link
+      file:
+        src: ~/dotfile/{{item}}
+        dest: ~/{{item}}
+        state: link
+        force: yes
+      with_items:
+        - .zshrc
+        - .vimrc
+    - name: create path
+      shell: touch ~/dotfile/.path
