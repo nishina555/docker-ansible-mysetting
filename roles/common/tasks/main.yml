@@ -6,14 +6,21 @@
       - zsh
       - git
       - tmux
+      - libtool
+      - autoconf
+      - automake
+      - cmake
+      - gcc
+      - gcc-c++
+      - make
+      - pkgconfig
+      - unzip
     - name: clone dotfiles
       git: repo=https://github.com/toshi247/dotfile.git dest=~/dotfile accept_hostkey=yes
       sudo: no
-    - name: clone neobundle
-      git: repo=https://github.com/Shougo/neobundle.vim dest=~/.vim/bundle/neobundle.vim accept_hostkey=yes
+    - name: clone neovim
+      git: repo=https://github.com/neovim/neovim dest=~
       sudo: no
-    - name: neoinstall
-      command: ~/.vim/bundle/neobundle.vim/bin/neoinstall
     - name: create symbolic link
       file:
         src: ~/dotfile/{{item}}
