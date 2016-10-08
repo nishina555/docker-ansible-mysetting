@@ -16,7 +16,7 @@
       - pkgconfig
       - unzip
     - name: clone dotfiles
-      git: repo=https://github.com/toshi247/dotfile.git dest=~/dotfile accept_hostkey=yes
+      git: repo=https://github.com/nishina555/dotfile.git dest=~/dotfile accept_hostkey=yes
       sudo: no
     - name: clone neovim
       git: repo=https://github.com/neovim/neovim.git dest=~/neovim
